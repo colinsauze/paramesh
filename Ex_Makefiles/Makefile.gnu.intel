@@ -32,7 +32,7 @@
 export FC = mpif90
 # for some reason the intel C compiler does not work with the C inteface (it
 # locks) but using gnu C does work OK
-export CC = mpicc_gnu
+export CC = mpigcc
 
 #-----------------------------------------------
 
@@ -47,7 +47,8 @@ export FFLAGS = -O3 -r8 -i4 -quiet -I../headers -nofor_main
 # NOTE: The intel C compler works for all the C code in PARAMESH except for
 #       the c_interface.  Use gnu C for best results.
 
-export CFLAGS = -O -I../headers -I/home/olson/HDF5/hdf5-1.6.2_intel/include
+#there must be a more portable way to do this???
+export CFLAGS = -O -I../headers -I/apps/libraries/hdf5/1.10.2/el7/AVX512/intel-2018/intel-2018/include
 
 #-----------------------------------------------
 
@@ -57,7 +58,7 @@ export CFLAGS = -O -I../headers -I/home/olson/HDF5/hdf5-1.6.2_intel/include
 
 # ADDITIONAL LIBRARIES (HDF5)
 
-export ADD_LIB = -L/usr/lib -lkio -lc -lm -lz /home/olson/HDF5/hdf5-1.6.2_intel/lib/libhdf5.a
+export ADD_LIB = -L/usr/lib -lm -lz /apps/libraries/hdf5/1.10.2/el7/AVX512/intel-2018/intel-2018/lib/libhdf5.a
 
 #--------------------------------------------------------------------------
 
@@ -96,5 +97,5 @@ libs:
 
 # An example target to match an application directory name other than Tests
 # in which the users application files are located.
-User_applic:	all
+your_tutorial:	all
 	$(MAKE) -C $@ -f Makefile.gnu

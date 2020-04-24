@@ -1,5 +1,11 @@
 #! /bin/sh
 
+# Supercomputing Wales setup
+
+module load hdf5
+module load mpi
+
+
 # NOTES: On drexel Dell machine put a ./ in front of executables
 #        e.g. mpirun -np 1 ./tutor
 ######## On MAC use make, not gmake
@@ -13,7 +19,8 @@ PARAMESH_ROOTDIR=$PWD
 #
 # USER EDIT
 #
-test_log_file=/home/macneice/Runs/test.log
+mkdir Runs
+test_log_file=$PWD/Runs/test.log
 
 #
 # start first tutorial testing
@@ -39,6 +46,9 @@ echo 'new your_tutorial created! '
 echo ' '
 echo ' '
 
+
+cp amr_runtime_parameters your_tutorial
+
 cd your_tutorial
 # insert logic which reports error if these 3 files cannot be found
 cp ../templates/Makefile.gnu_template Makefile.gnu
@@ -51,7 +61,7 @@ cd ..
 #
 # USER EDIT
 #
-cp ../Makefile.gnu.g95 make_tutor
+cp Ex_makefiles/Makefile.gnu.intel make_tutor
 gmake -f make_tutor clean
 
 echo ' '
