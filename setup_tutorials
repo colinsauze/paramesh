@@ -5,7 +5,6 @@
 module load hdf5
 module load mpi
 
-
 # NOTES: On drexel Dell machine put a ./ in front of executables
 #        e.g. mpirun -np 1 ./tutor
 ######## On MAC use make, not gmake
@@ -61,7 +60,7 @@ cd ..
 #
 # USER EDIT
 #
-cp Ex_makefiles/Makefile.gnu.intel make_tutor
+cp Ex_Makefiles/Makefile.gnu.intel make_tutor
 gmake -f make_tutor clean
 
 echo ' '
